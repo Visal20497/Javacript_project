@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Event Assigment</title>
+    <style>
+        *{
+            background-color: aquamarine;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto;
+            margin-left:10%;
+        }
+        #sum,#sum2,#sum3{
+            color: white;
+            background-color: rgb(142, 226, 57);
+            width: 150px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 15px;
+        }
+        #sub,#sub2,#sub3{
+            color: white;
+            background-color: rgb(235, 232, 67);
+            width: 150px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 15px;
+        }
+        #total{
+            color:beige;
+            background-color: rgb(228, 136, 214);
+            width: 150px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 15px;
+        }
+        span{
+            color: rgb(98, 53, 170);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            background-color: beige;
+            width: 150px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Assignment Add Number</h1>
+    <button id="sum">+</button>
+         <span id="input1"></span>
+    <button id="sub">-</button><br><br>
+    <button id="sum2">+</button>
+          <span id="input2"></span>
+    <button id="sub2">-</button><br><br>
+    <button id="sum3">+</button>
+          <span id="input3"></span>
+    <button id="sub3">-</button><br><br>
+    <button id="total">Total</button>
+    <span id="input4"></span>
+    <script>
+     let x=0
+     let sum =document.getElementById('sum')
+     let sub =document.getElementById('sub')
+     let input1 =document.getElementById('input1')
+     sum.addEventListener('click',()=>{
+        input1.innerText=`${++x}`
+        document.getElementById('sub').style.display='inline'
+     })
+     sub.addEventListener('click',()=>{
+        if(x<=0){
+            input1.innerHTML=0
+            document.getElementById('sub').style.display='none'
+
+        }else{
+            
+            input1.innerText=`${--x}`
+        }
+     })
+
+     let y=0
+     let sum2 =document.getElementById('sum2')
+     let sub1 =document.getElementById('sub2')
+     let input2 =document.getElementById('input2')
+     sum2.addEventListener('click',()=>{
+        input2.innerText=`${++y}`
+        document.getElementById('sub2').style.display='inline'
+     })
+     sub2.addEventListener('click',()=>{
+        if(y<=0){
+            input2.innerHTML=0
+            document.getElementById('sub2').style.display='none'
+        }else{
+            input2.innerText=`${--y}`
+            
+        }
+     })
+
+     let z=0
+     let sum3 =document.getElementById('sum3')
+     let sub3 =document.getElementById('sub3')
+     let input3 =document.getElementById('input3')
+     sum3.addEventListener('click',()=>{
+        input3.innerText=`${++z}`
+        document.getElementById('sub3').style.display='inline'
+     })
+     sub3.addEventListener('click',()=>{
+        if(z<=0){
+            input3.innerHTML=0
+            document.getElementById('sub3').style.display='none'   
+        }else{
+            
+            input3.innerText=`${--z}`
+        }
+     })
+        let total=document.getElementById('total')
+        total.addEventListener('click',()=>{ 
+            let input4=document.getElementById('input4')
+            input4.innerText=x+y+z});
+        
+
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown model</title>
+    <style>
+        body{
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              background-color: rgb(255, 251, 0);  
+              margin:0;
+        }
+        .form-group{
+            margin-top: 50px;
+        }
+        .form-group select,
+        .form-group input{
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .form-group button {
+            font-size: 16px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .form-group select,
+        .form-group input,
+        .delete-button {
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .delete-button {
+            background-color: #ff3333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-group">
+        <select  id="inputType">
+            <option value="text">Text</option>
+            <option value="email">Email</option>
+            <option value="textarea">Textarea</option>
+            <option value="button">Button</option>
+        </select>
+        <button onclick="addField()">Add Field</button>
+    </div>
+    <div id="formOutput"></div>
+    <script>
+        function addField(){
+            let inputType=document.getElementById('inputType').value;
+            let formOutput=document.getElementById('formOutput');
+            let newField=document.createElement(inputType === 'textarea'? 'textarea':'input');
+            newField.type=inputType;
+            newField.placeholder=`Enter ${inputType}`;
+            let deleteButton=document.createElement('button');
+            deleteButton.innerText='Delete';
+            deleteButton.className='delete-button';
+            deleteButton.onclick=function () {
+                newField.remove();
+                deleteButton.remove();
+
+            };
+            formOutput.appendChild(newField);
+            formOutput.appendChild(deleteButton);
+        }
+
+    </script>
+    
+</body>
+</html>

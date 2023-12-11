@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #RegisterPage {
+        display: none;
+      }
+    </style>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <form action="" id="form">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Container wrapper -->
+        <div class="container">
+          <!-- Navbar brand -->
+          <a class="navbar-brand me-2" href="https://mdbgo.com/">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+              height="16"
+              alt="MDB Logo"
+              loading="lazy"
+              style="margin-top: -1px"
+            />
+          </a>
+
+          <!-- Toggle button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Collapsible wrapper -->
+          <div class="collapse navbar-collapse" id="navbarButtonsExample">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Dashboard</a>
+              </li>
+            </ul>
+            <!-- Left links -->
+
+            <div class="d-flex align-items-center">
+              <button class="btn btn-primary me-3">LogIn</button>
+            </div>
+          </div>
+          <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+      </nav>
+      <!-- Navbar -->
+    </form>
+    <form action="" id="LoginPage">
+      <section class="vh-100" style="background-color: #9a616d">
+        <div class="container py-5 h-100">
+          <div
+            class="row d-flex justify-content-center align-items-center h-100"
+          >
+            <div class="col col-xl-10">
+              <div class="card" style="border-radius: 1rem">
+                <div class="row g-0">
+                  <div class="col-md-6 col-lg-5 d-none d-md-block">
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                      alt="login form"
+                      class="img-fluid"
+                      style="border-radius: 1rem 0 0 1rem"
+                    />
+                  </div>
+                  <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                    <div class="card-body p-4 p-lg-5 text-black">
+                      <form>
+                        <div class="d-flex align-items-center mb-3 pb-1">
+                          <i
+                            class="fas fa-cubes fa-2x me-3"
+                            style="color: #ff6219"
+                          ></i>
+                          <span class="h1 fw-bold mb-0">Logo</span>
+                        </div>
+
+                        <h5
+                          class="fw-normal mb-3 pb-3"
+                          style="letter-spacing: 1px"
+                        >
+                          Sign into your account
+                        </h5>
+
+                        <div class="form-outline mb-4">
+                          <input
+                            type="email"
+                            id="LoginEmail"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="form2Example17"
+                            >Email address</label
+                          >
+                        </div>
+
+                        <div class="form-outline mb-4">
+                          <input
+                            type="password"
+                            id="LoginPassword"
+                            class="form-control form-control-lg"
+                          />
+                          <label class="form-label" for="form2Example27"
+                            >Password</label
+                          >
+                        </div>
+
+                        <div class="pt-1 mb-4">
+                          <button
+                            class="btn btn-dark btn-lg btn-block"
+                            id="logIn"
+                          >
+                            Login
+                          </button>
+                        </div>
+
+                        <a class="small text-muted" href="#!"
+                          >Forgot password?</a
+                        >
+                        <p
+                          class="mb-5 pb-lg-2"
+                          id="regisbtn"
+                          style="color: #393f81"
+                        >
+                          Don't have an account?
+                          <a href="#!" style="color: #393f81">Register here</a>
+                        </p>
+                        <a href="#!" class="small text-muted">Terms of use.</a>
+                        <a href="#!" class="small text-muted">Privacy policy</a>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+    <form action="" id="RegisterPage">
+      <section class="vh-100" style="background-color: #eee">
+        <div class="container h-100">
+          <div
+            class="row d-flex justify-content-center align-items-center h-100"
+          >
+            <div class="col-lg-12 col-xl-11">
+              <div class="card text-black" style="border-radius: 25px">
+                <div class="card-body p-md-5">
+                  <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                        Sign up
+                      </p>
+
+                      <form class="mx-1 mx-md-4">
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input
+                              type="text"
+                              id="urname"
+                              class="form-control"
+                              placeholder="Your name"
+                            />
+                            <label class="form-label" for="form3Example1c"
+                              >Your Name</label
+                            >
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input
+                              type="email"
+                              id="email"
+                              class="form-control"
+                              placeholder="Enter your email"
+                            />
+                            <label class="form-label" for="form3Example3c"
+                              >Your Email</label
+                            >
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input
+                              type="password"
+                              id="pass"
+                              class="form-control"
+                            />
+                            <label class="form-label" for="form3Example4c"
+                              >Password</label
+                            >
+                          </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input
+                              type="password"
+                              id="cpass"
+                              class="form-control"
+                            />
+                            <label class="form-label" for="form3Example4cd"
+                              >Repeat your password</label
+                            >
+                          </div>
+                        </div>
+
+                        <div
+                          class="form-check d-flex justify-content-center mb-5"
+                        >
+                          <input
+                            class="form-check-input me-2"
+                            type="checkbox"
+                            value=""
+                            id="form2Example3c"
+                          />
+                          <label class="form-check-label" for="form2Example3">
+                            I agree all statements in
+                            <a href="#!">Terms of service</a>
+                          </label>
+                        </div>
+
+                        <div
+                          class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
+                        >
+                          <button
+                            type="button"
+                            class="btn btn-primary btn-lg"
+                            id="regteredbtn"
+                          >
+                            Register
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <div
+                      class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+                    >
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                        class="img-fluid"
+                        alt="Sample image"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+    <script>
+      let regisPage = document.getElementById("RegisterPage");
+      let logInPage = document.getElementById("LoginPage");
+      let regisbtn = document.getElementById("regisbtn");
+      let regteredbtn = document.getElementById("regteredbtn");
+      let Email = document.getElementById("email");
+      let password = document.getElementById("pass");
+      let cpass = document.getElementById("cpass");
+      let urname = document.getElementById("urname");
+      let loginBtn = document.getElementById("logIn");
+      let LoginEmail = document.getElementById("LoginEmail");
+      let LoginPassword = document.getElementById("LoginPassword");
+      let isvalidate = false;
+      let globalarr = localStorage.getItem("loginData")
+        ? JSON.parse(localStorage.getItem("loginData"))
+        : [];
+      let data;
+
+      let isLoginInProgress = false;
+
+loginBtn.addEventListener("click", () => {
+  
+  if (isLoginInProgress) {
+    return;
+  }
+  isLoginInProgress = true;
+  const user = globalarr.find((item) => LoginEmail.value === item.Email );
+
+  if (user && LoginPassword.value === user.password ) {
+    console.log("Login successful");
+    logInPage.setAttribute("action", "login_logout page 2.html");
+  } else {
+    alert("Email or Password is not registered");
+  }
+  isLoginInProgress = false;
+});
+loginBtn.addEventListener("click", () => {
+  LoginEmail.value = '';
+  LoginPassword.value = '';
+});
+
+    
+
+      regisbtn.addEventListener("click", () => {
+        regisPage.style.display = "block";
+        logInPage.style.display = "none";
+      });
+
+      regteredbtn.addEventListener("click", () => {
+        if (urname.value && password.value && cpass.value && Email.value) {
+          if (password.value === cpass.value && urname.value.length >= 6) {
+            isvalidate = true;
+            let data = {
+              useername: urname.value,
+              password: password.value,
+              confirmPassword: cpass.value,
+              Email: Email.value,
+            };
+            globalarr.push(data);
+            console.log(globalarr);
+            console.log("hello");
+            localStorageItems();
+            regisPage.style.display = "none";
+            logInPage.style.display = "block";
+          } else if (password.value !== cpass.value) {
+            isvalidate = false;
+            alert("Password is match with confirm password");
+          } else if (urname.value.length < 6) {
+            isvalidate = false;
+            alert("username require minimum 6 letter");
+          }
+        }
+
+        urname.value = "";
+        password.value = "";
+        cpass.value = "";
+        Email.value = "";
+      });
+
+      function localStorageItems() {
+        localStorage.setItem("loginData", JSON.stringify(globalarr));
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

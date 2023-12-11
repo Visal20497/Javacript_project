@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BallMove</title>
+    <style>
+        #divh1{
+            position: relative;
+            display: flex;
+        }
+        .div1,.div2,.div3,.div4{
+            border-radius: 50%;
+            background-color: #c0c6cf;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div:hover{
+            background-color:#77997e;
+            padding: 1px;
+        }
+        .div1{
+            position:absolute;
+            top:88%;
+            left:50%;
+        }
+        .div2{
+            position:absolute;
+            top: 75%;
+            left: 50%;
+        }
+        .div3{
+            position:absolute;
+            top: 82%;
+            left:45%;
+        }
+        .div4{
+            position:absolute;
+            top: 82%;
+            left: 55%;
+        }
+        .h1{
+            background-color: #de97b0;
+            width: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height:70px;
+            border-radius: 50%;
+            position: absolute;
+            top:30%;
+            left: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="divh1">
+        <h1 class="h1" id="h11">HI</h1>
+    </div>
+    <div class="div1 movedown" id="1"><i class="fa fa-arrow-down" style="font-size:24px"></i></div>
+    <div class="div2 moveup" id="2"><i class="fa fa-arrow-up" style="font-size:24px"></i></div>
+    <div class="div3 moveleft" id="3"><i class="fa fa-arrow-left" style="font-size:24px"></i></div>
+    <div class="div4 moveright" id="4"><i class="fa fa-arrow-right" style="font-size:24px"></i></div>
+    <script>
+        let h1=document.getElementById('h11');
+        let div1=document.getElementById('1');
+        let div2=document.getElementById('2');
+        let div3=document.getElementById('3');
+        let div4=document.getElementById('4');
+        let x=30;
+        div1.addEventListener('click',()=>{
+            h1.style.position='absolute';
+            h1.style.top=`${x++}%`;
+        });
+        div2.addEventListener('click',()=>{
+            h1.style.position='absolute';
+            h1.style.top=`${x--}%`
+        });
+        let y=50;
+        div3.addEventListener('click',()=>{
+            h1.style.position='absolute'
+            h1.style.left=`${y--}%`
+        });
+        div4.addEventListener('click',()=>{
+            h1.style.position='absolute'
+            h1.style.left=`${y++}%`
+        });
+    </script>
+    
+</body>
+</html>

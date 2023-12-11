@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <style>
+        #openModel{
+            background-color: aqua;
+            width: 750px;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+        #mymodel{
+            display: none;
+            z-index: 1;
+            position: absolute;
+            top: 0px;
+            background-color: rgb(235, 141, 193);
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            width: 60%;
+            height: 70%;
+        }
+        #closeModalbtn{
+            background-color:red;
+            border: none;
+            color: beige;
+            position: absolute;
+            left: 750px;
+            top: 0px;
+            width: 10%;
+            height: 5%;
+        }
+        h2{
+            position: absolute;
+            top: 150px;
+            left: 250px;
+            color: white;
+            font-size: 50px;
+        }
+
+    </style>
+<body>
+    <div id="openModel">
+        <button id="openModelbtn">openModel</button>
+    </div>
+    <div class="model" id="mymodel">
+        <div class="modelContent">
+            <button id="closeModalbtn">X</button>
+            <h2>Hi How are you?</h2>
+        </div>
+    </div>
+    <script>
+        let openModelbtn=document.getElementById('openModelbtn');
+        let closeModalbtn=document.getElementById('closeModalbtn');
+        let model=document.getElementById('mymodel')
+        openModelbtn.addEventListener('click',()=>{
+            model.style.display='block'
+        });
+        closeModalbtn.addEventListener('click',()=>{
+            model.style.display='none';
+        })
+    </script>
+</body>
+</html>

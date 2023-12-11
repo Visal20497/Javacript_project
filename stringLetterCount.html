@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Word letter Count</title>
+    <style>
+        #input{
+            background-color: #e1e3e6;
+            font-size: 25px;
+            border-radius: 0.5%;
+            color:#db5a7c;
+        }
+        body{
+            font-weight: 800;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="input" cols="80" rows="10" placeholder="Pease type your text here..."></textarea><br>
+    Total word Count: <span id="wordCount"></span><br> <br>
+    Total letter Count : <span id="letterCount"></span>
+    <script>
+        let inputfield=document.getElementById('input')
+        let wordCount=document.getElementById('wordCount');
+        let letterCount=document.getElementById('letterCount');
+        function countLetter(){
+            let string=inputfield.value;
+            totalLetter=string.replace(/[^a-zA-Z]/g,'').length;
+            letterCount.textContent=totalLetter;
+        };
+        inputfield.addEventListener('input',countLetter);
+        function COUNTword(){
+            let string=inputfield.value;
+            let totalwords=string.trim().split(/\s+/).filter(word=> word!=='');
+            wordCount.textContent=totalwords.length;
+        };
+        inputfield.addEventListener('input',COUNTword);
+
+    </script>
+</body>
+</html>

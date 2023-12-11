@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeeCalculator</title>
+</head>
+
+<body>
+    <form action="feeCalculator2.html">
+        Enter your name: <input type="text" placeholder="Enter your name" id="username">
+        <div id="unerror" class="error"></div>
+        <br>
+        Gender:
+        M<input type="radio" name="gender" id="m" value="M">
+        F<input type="radio" name="gender" id="f" value="F">
+        O<input type="radio" name="gender" id="f" value="O">
+        <br><br>
+        Select Course:
+        <select id="CourseName">
+            <option value="Course">Select Course</option>
+            <option value="MERN">MERN</option>
+            <option value="PYTHON">PYTHON</option>
+            <option value="JAVA">JAVA</option>
+        </select> <br><br>
+        Paid Fee: <input id='paidFee' type="number"><br><br>
+        Category:
+        <select id="cat">
+            <option value="select">Select</option>
+            <option value="genral">Genral</option>
+            <option value="obc">OBC</option>
+            <option value="sc/st">SC/ST</option>
+            <option value="other">Other</option>
+        </select>
+        <br><br>
+        <button type="submit" id="btn">Submit</button>
+    </form>
+    <script>
+        let btn = document.getElementById('btn');
+        let idnumber = 1;
+        btn.addEventListener('click', (e) => {
+            // e.preventDefault()
+            let globararr = localStorage.getItem('arrayItem') ? JSON.parse(localStorage.getItem('arrayItem')) : []
+
+            let name = document.getElementById('username');
+            let unerror = document.getElementById('unerror');
+            let gender = document.querySelector('input[name="gender"]:checked');
+            let course = document.getElementById('CourseName');
+            let paidFee = document.getElementById('paidFee');
+            let category = document.getElementById('cat');
+            let ActualFeeAmount;
+            let DiscounteFee;
+            let remaingFee;
+            if (course.value == 'MERN') {
+                ActualFeeAmount = 35000;
+            }
+            else if (course.value == 'JAVA') {
+                ActualFeeAmount == 30000;
+            }
+            else if(course.value=='select'){
+                ActualFeeAmount=0;
+            }
+            else {
+                ActualFeeAmount == 25000;
+            }
+
+
+            if (category.value == 'genral') {
+                DiscounteFee = ActualFeeAmount;
+                remaingFee = DiscounteFee - paidFee.value;
+            }
+            else if (category.value == 'obc') {
+                DiscounteFee = (ActualFeeAmount * 9) / 10;
+                remaingFee = DiscounteFee - paidFee.value;
+
+            }
+            else if (category.value == "sc/st") {
+                DiscounteFee = (ActualFeeAmount * 17) / 20;
+                remaingFee = DiscounteFee - paidFee.value;
+
+            }
+            else {
+                DiscounteFee = (ActualFeeAmount * 4) / 5;
+                remaingFee = DiscounteFee - paidFee.value;
+
+            }
+
+
+            let details = {
+                id: idnumber,
+                Name: name.value,
+                Gen: gender.value,
+                Course: course.value,
+                PaidFEE: paidFee.value,
+                CATEGORY: category.value,
+                ActualFeeAmount: ActualFeeAmount,
+                DiscounteFee: DiscounteFee,
+                remaingFee: remaingFee
+            };
+            globararr.push(details);
+            console.log(details);
+            console.log(globararr);
+
+            localStorage.setItem('arrayItem', JSON.stringify(globararr));
+
+            name.value = '';
+            unerror.value = '';
+            paidFee.value = '';
+            course.value = course.children[0].value;
+            category.value = category.children[0].value;
+            gender.checked = false;
+
+        });
+    </script>
+</body>
+
+</html>

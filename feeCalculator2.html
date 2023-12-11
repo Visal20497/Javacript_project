@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form  id="form">
+    <div>
+        <div id="container"></div><br>
+        <div >Total No of Student: <span id="totalStudents"></span></div><br>
+        <span >JAVA Student Count:<span id="javacount"></Count:span></span><br><br>
+        <span >MERN Student Count: <span id="merncount"></span></span><br><br>
+        <span >PYTHON Student Count: <span id="pythoncount"></span></span><br><br>
+        <button id="btn1" onclick="DeleteAll()">Clear All</button>
+        <button id="btn2" onclick="PrePage()">Previous Page</button>
+    </div>
+</form>
+    <script>
+        let yourname=document.getElementById('yourname');
+        let Gender=document.getElementById('gender');
+        let course=document.getElementById('course');
+        let category=document.getElementById('category');
+        let coursefee=document.getElementById('coursefee');
+        let paidFee=document.getElementById('paidFee');
+        let remaing=document.getElementById('remaing');
+        let btn=document.getElementById('btn');
+        let btn1=document.getElementById('btn1');
+        let btn2=document.getElementById('btn2');
+        let container=document.getElementById('container');
+        let form=document.getElementById('form');
+        let totalStudents=document.getElementById('totalStudents');
+        let javacount=document.getElementById('javacount');
+        let mercount=document.getElementById('merncount');
+        let pythoncount=document.getElementById('pythoncount');
+
+        let globararr = localStorage.getItem('arrayItem')? JSON.parse(localStorage.getItem('arrayItem')):[]
+        let idvalue=1;
+        for(let i=0;i<globararr.length;i++){
+            globararr[i].id=idvalue++;
+        }
+        
+        function print(){
+            let str=''  
+            if(globararr.length==0){
+                str+=`<h1>No Records found</h1>`
+            }
+            else {
+                str+=globararr.map((details)=>{
+                    return `<div>Your Name: <span id="yourname">${details.Name}</span><br>
+            Gender :  <span id="gender">${details.Gen}</span><br>
+            Selected Course: <span id="course">${details.Course}</span><br>
+            Category : <span id="category">${details.CATEGORY}</span><br>
+            Course Fee: <span id="coursefee">${details.ActualFeeAmount}</span><br>
+            PaidFee: <span id="paidFee">${details.PaidFEE}</span><br>
+            Remaing Fee: <span id="remaing">${details.remaingFee}</span><br><br>
+            <button id="btn" onclick="remove(${details.id})">Delete</button>
+            </div>`
+        })
+    }
+           container.innerHTML=str;
+           totalStudents.innerHTML=globararr.length;
+           let java=globararr.filter((count)=>{
+            return count.Course=="JAVA"
+           });
+           let mern=globararr.filter((count)=>{
+            return count.Course=="MERN"
+           });
+           let python=globararr.filter((count)=>{
+            return count.Course=="PYTHON"
+           });
+           javacount.innerText=java.length;
+           merncount.innerText=mern.length;
+           pythoncount.innerText=python.length;
+           console.log(globararr);
+           localStorageItems();
+        };
+        print();
+
+        function remove(id){
+            let x=globararr.filter((details)=>
+            {
+                return details.id !=id;
+            });
+            globararr=x;
+            print();
+            localStorageItems();
+        }
+
+        function DeleteAll()
+        {
+            if(globararr.length){
+                globararr.length=0
+                print();
+                localStorageItems();
+            }
+        }
+        function localStorageItems(){
+            localStorage.setItem('arrayItem',JSON.stringify(globararr))
+        }
+        function PrePage(){
+            form.setAttribute("action","FeeCalculator.html");
+
+        }
+    </script>
+</body>
+</html>

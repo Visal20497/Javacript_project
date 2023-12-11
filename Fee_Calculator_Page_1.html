@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="Fee_Calculator_Page_2.html"  method="get">
+
+        <label for="#">Enter Your Name : </label>
+        <input type="text" placeholder="Enter Your Name" id="username"><br><br>
+
+        <label for="">Select Your Gender : </label>
+        <input type="radio" name="gender" value="Male" id="Male">Male
+        <input type="radio" name="gender" value="Female" id="Female">Female
+        <input type="radio" name="gender" value="Others" id="Others">Others
+        <br><br>
+
+        <label for="">Select Course :</label>
+        <select id="options1">
+            <option value="Select Option">Select Option</option>
+            <option value="MERN">MERN</option>
+            <option value="JAVA">JAVA</option>
+            <option value="PYTHON">PYTHON</option>
+        </select><br><br>
+
+        <label for="#">Paid Fee :</label>
+        <input type="text" id="feeInput"><br><br>
+
+        <label for="#">Category :</label>
+        <select id="options2">
+            <option value="Select Option">Select Option</option>
+            <option value="General">General</option>
+            <option value="OBC">OBC</option>
+            <option value="ST/SC">ST/SC</option>
+            <option value="Others">Others</option>
+        </select><br><br>
+
+        <button id="btn" onclick="getdata()">Submit</button> <br><br>
+
+    </form>
+
+    <script>
+        let globalArray=localStorage.getItem('arrayItem')? JSON.parse(localStorage.getItem('arrayItem')):[]
+
+        // let globalArray=[]
+        let idNumber=1
+        function getdata() {
+            // event.preventDefault()
+            let username = document.getElementById('username')
+            let g = document.querySelector('input[name="gender"]:checked')
+            let options1 = document.getElementById('options1')
+            let feeInput = document.getElementById('feeInput')
+            let options2 = document.getElementById('options2')
+            let remainingFee = 0
+            let ActualFeeAmount = 0
+            let categoryWiseFee = 0
+
+
+            if (options1.value == 'MERN') {
+                ActualFeeAmount = 35000
+            }
+            else if (options1.value == 'JAVA') {
+                ActualFeeAmount = 30000
+            }
+            else if (options1.value == 'PYTHON') {
+                ActualFeeAmount = 25000
+            }
+
+            if (options2.value == 'General') {
+                categoryWiseFee = ActualFeeAmount
+            }
+            else if (options2.value == 'OBC') {
+                categoryWiseFee = ActualFeeAmount - parseInt((ActualFeeAmount * 10) / 100)
+            }
+            else if (options2.value == 'ST/SC') {
+                categoryWiseFee = ActualFeeAmount - parseInt((ActualFeeAmount * 15) / 100)
+            }
+            else if (options2.value == 'Others') {
+                categoryWiseFee = ActualFeeAmount - parseInt((ActualFeeAmount * 20) / 100)
+            }
+
+            remainingFee = categoryWiseFee - feeInput.value
+
+            let data={
+                id:idNumber,
+                userName:username.value,
+                gender:g.value,
+                course:options1.value,
+                options2:options2.value,
+                remainFee:remainingFee,
+                feeInput:feeInput.value
+            }
+
+            globalArray.push(data)
+
+            console.log(data)
+
+            console.log(globalArray)
+
+            localStorage.setItem('arrayItem',JSON.stringify(globalArray))
+
+            username.value = ''
+            feeInput.value = ''
+            options1.value = options1.children[0].value
+            options2.value = options2.children[0].value
+            g.checked = false
+        }
+    </script>
+</body>
+</html>

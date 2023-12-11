@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+
+<body>
+    <div class="wrapper">
+        <form action="marks.html">
+            <input type="text" placeholder="Enter Your Name" id="input">
+            <div class="container" id="container">
+            </div>
+            <button id="btn">Submit Your Paper</button>
+        </form>
+    </div>
+
+    <script>
+        let idNumber = 1
+        let arrayOfQuestions = [
+            {   id:1,
+                question: 'what is JavaScript ?',
+                a: 'It is a Scripting Language',
+                b: 'It is a programming Language',
+                c: 'It is a Spoken Language',
+                d: 'None of the Above',
+                answer: 'a'
+            },
+            {
+                id:2,
+                question: 'what is the father of Java Script ?',
+                a: 'Tim Berners Lie',
+                b: 'Charle Babbage',
+                c: 'Bernden Eich',
+                d: 'None of the Above',
+                answer: 'c'
+            },
+            {
+                id:3,
+                question: 'what is null  ?',
+                a: 'null is an empty value',
+                b: 'null is created by java script',
+                c: 'null is a operator',
+                d: 'None of the Above',
+                answer: 'a'
+            },
+            {
+                id:4,
+                question: 'what is return type of null ?',
+                a: 'number',
+                b: 'object',
+                c: 'string',
+                d: 'None of the Above',
+                answer: 'b'
+            },
+            {
+                id:5,
+                question: 'array is which data type ?',
+                a: 'primitive data type',
+                b: 'basic data type',
+                c: 'non-primitive data type',
+                d: 'None of the Above',
+                answer: 'c'
+            },
+            {
+                id:6,
+                question: 'DOM full Form ?',
+                a: 'document object module',
+                b: 'document object model',
+                c: 'document oriented module',
+                d: 'None of the Above',
+                answer: 'b'
+            },
+            {
+                id:7,
+                question: 'BOM full Form ?',
+                a: 'browser object module',
+                b: 'browser object model',
+                c: 'browser oriented module',
+                d: 'None of the Above',
+                answer: 'b'
+            },
+            {
+                id:8,
+                question: 'pop and push are methods of which data type?',
+                a: 'object',
+                b: 'string',
+                c: 'arrays',
+                d: 'None of the Above',
+                answer: 'c'
+            },
+            {
+                id:9,
+                question: 'what is an object ?',
+                a: 'object is key-value pairs',
+                b: 'object is collections of elements',
+                c: 'object is an collections of characters',
+                d: 'None of the Above',
+                answer: 'a'
+            },
+            {
+                id:10,
+                question: 'what is method?',
+                a: 'method is a way',
+                b: 'method is a function which is created in an object',
+                c: 'method is a solution',
+                d: 'None of the Above',
+                answer: 'b'
+            }
+        ]
+
+        let container = document.getElementById('container')
+        let btn = document.getElementById('btn')
+        let input = document.getElementById('input')
+
+        print()
+
+
+        function print() {
+            let str = ''
+            str += arrayOfQuestions.map((data) => {
+                data.id = idNumber;
+                idNumber++;
+
+                return ` <div class="box">
+                <h1>${data.id}. ${data.question}</h1>
+                <div class="options">
+                    <input type="radio" name="${data.id}" value="a" onclick=" checkedRadio(this,${data.id})">
+                    <label>${data.a}</label>
+                    <input type="radio" name="${data.id}"  value="b" onclick=" checkedRadio(this,${data.id})">
+                    <label>${data.b}</label>
+                    <input type="radio" name="${data.id}"  value="c" onclick=" checkedRadio(this,${data.id})">
+                    <label>${data.c}</label>
+                    <input type="radio" name="${data.id}"  value="d" onclick=" checkedRadio(this,${data.id})">
+                    <label>${data.d}</label>
+                </div>
+            </div>`
+            })
+
+            container.innerHTML = str
+        }
+
+
+
+        let optionArray = [],falseOption=[]
+
+        function checkedRadio(opt, id) {
+            optionArray[id - 1] = opt.value
+            falseOption[id-1]=opt
+
+            console.log(optionArray)
+        }
+
+        btn.addEventListener('click', () => {
+            let score = 0
+            // event.preventDefault()
+            for (let i = 0; i < arrayOfQuestions.length; i++) {
+                if (arrayOfQuestions[i].answer == optionArray[i]) {
+                    score++;
+                }
+                else{
+                    score=score
+                }
+            }
+
+            let details=[input.value,arrayOfQuestions.length,score]
+
+            localStorage.setItem('userName',JSON.stringify(details))
+
+            for(let i=0;i<falseOption.length;i++){
+                falseOption[i].checked=false
+            }
+
+            input.value=''
+            
+        })
+
+    </script>
+</body>
+
+</html>

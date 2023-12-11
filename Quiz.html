@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuestionPaper</title>
+</head>
+<body>
+    Enter your name: <input type="text">
+    <div id="quiz"></div>
+    <button id="submit">submit</button>
+    <div id="results"></div>
+    <script>
+    var myQuestions = [
+        {
+            question: "Q 1.  What is Javascript type ?",
+            answers: {
+                a: 'dynamic',
+                b: 'static',
+                c: 'both'
+            },
+            correctAnswer: 'a'
+        },
+        {
+            question: "Q 2.  Please select falsey value ?",
+            answers: {
+                a: 'Null',
+                b: '5',
+                c: '10'
+            },
+            correctAnswer: 'a'
+        },
+        {
+            question: "Q 3.  console.log(2-'2'+2) give the output ?",
+            answers: {
+                a: '20',
+                b: '2-22',
+                c: '2'
+            },
+            correctAnswer: 'b'
+        },
+        {
+            question: "Q 4.  Why we use for of loop in javascript ?",
+            answers: {
+                a: 'To get index value of an array',
+                b: 'to get array element',
+                c: 'both'
+            },
+            correctAnswer: 'b'
+        }
+    ];
+
+    var quizContainer = document.getElementById('quiz');
+    var resultsContainer = document.getElementById('results');
+    var submitButton = document.getElementById('submit');
+
+    generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+    function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
+
+        function showQuestions(questions, quizContainer) {
+            var output = [];
+            var answers;
+
+            for (var i = 0; i < questions.length; i++) {
+
+                answers = [];
+
+                for (letter in questions[i].answers) {
+
+                    answers.push(
+                        '<label>'
+                        + '<input type="radio" name="question' + i + '" value="' + letter + '">'
+                        + letter + ': '
+                        + questions[i].answers[letter]
+                        + '</label>'
+                    );
+                }
+
+                output.push(
+                    '<div class="question">' + questions[i].question + '</div>'
+                    + '<div class="answers">' + answers.join('') + '</div>'
+                );
+            }
+
+            quizContainer.innerHTML = output.join('');
+        }
+
+
+        function showResults(questions, quizContainer, resultsContainer) {
+
+            var answerContainers = quizContainer.querySelectorAll('.answers');
+
+            var userAnswer = '';
+            var numCorrect = 0;
+
+            for (var i = 0; i < questions.length; i++) {
+
+                userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+
+                if (userAnswer === questions[i].correctAnswer) {
+                    numCorrect++;
+
+                    answerContainers[i].style.color = 'lightgreen';
+                }
+                else {
+                    answerContainers[i].style.color = 'red';
+                }
+            }
+
+            resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
+        }
+
+        showQuestions(questions, quizContainer);
+
+        submitButton.onclick = function () {
+            showResults(questions, quizContainer, resultsContainer);
+        }
+
+    }
+
+
+    
+    </script>
+       
+
+    
+</body>
+</html>

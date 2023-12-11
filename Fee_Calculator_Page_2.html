@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            width: 100%;
+            /* height: 100vh; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 95%;
+            height: 95%;
+            background-color: rebeccapurple;
+            margin: 1rem;
+            padding: 1rem;
+        }
+
+        #box {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .subBox {
+            width: 250px;
+            height: 150px;
+            padding: 1rem;
+            background-color: white;
+            margin: 0.5rem;
+        }
+
+        .headings,
+        .subBoxes,
+        .Count {
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            margin: 3rem 1rem;
+        }
+
+        .to {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            font-size: 1.4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div id="box">
+            </div>
+            <div class="to">Total No of Students : <span id="totalStudents"></span></div>
+            <button onclick="deleteWhileData()">Delete Data</button>
+            <div class="headings">
+                <div>ID</div>
+                <div>Name</div>
+                <div>Course</div>
+                <div>Remaining Fee</div>
+                <div>Delete</div>
+            </div>
+            <div id="subBox">
+            </div>
+            <div class="Count">
+                <h1>Java Count : <span id="javaCount"></span></h1>
+                <h1>Mern Count : <span id="mernCount"></span></h1>
+                <h1>Python Count : <span id="pythonCount"></span></h1>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let box = document.getElementById('box')
+        let subBox = document.getElementById('subBox')
+        let totalStudents = document.getElementById('totalStudents')
+        let javaCount = document.getElementById('javaCount')
+        let mernCount = document.getElementById('mernCount')
+        let pythonCount = document.getElementById('pythonCount')
+
+        let globalArray = localStorage.getItem('arrayItem')? JSON.parse(localStorage.getItem('arrayItem')):[]
+
+        let value=1
+
+        for(let i=0;i<globalArray.length;i++){
+            globalArray[i].id=value++;
+        }
+
+
+        function print() {
+            let str = '', ptr = ''
+
+            if (globalArray.length == 0) {
+                str = `<h1>No Data Found</h1>`
+            }
+            else {
+                str += globalArray.map((data) => {
+                    return `<div class="subBoxes">
+                        <div>${data.id}</div>
+                        <div>${data.userName}</div>
+                        <div>${data.course}</div>
+                        <div>${data.remainFee}</div>
+                        <button onclick="remove(${data.id})">X</button>
+                    </div>`
+                })
+                value++;
+                ptr += globalArray.map((data) => {
+                    return `<div class="subBox"> Your Name is :
+                        ${data.userName} <br> Gender : ${data.gender} <br> Selected Course : ${data.course} <br> Caste : ${data.options2} <br> You Paid Fee : ${data.feeInput} <br> Remaining Fee : ${data.remainFee}
+                    </div>`
+                })
+            }
+            box.innerHTML = ptr
+            subBox.innerHTML = str
+            totalStudents.innerText = globalArray.length
+
+            let x = globalArray.filter((data) => {
+                return data.course == 'JAVA'
+            })
+            let y = globalArray.filter((data) => {
+                return data.course == 'MERN'
+            })
+            let z = globalArray.filter((data) => {
+                return data.course == 'PYTHON'
+            })
+
+            javaCount.innerText = x.length
+            mernCount.innerText = y.length
+            pythonCount.innerText = z.length
+
+            console.log(globalArray)
+        }
+        print()
+
+
+        function remove(id) {
+            let x = globalArray.filter((data) => {
+                return data.id != id
+            })
+            globalArray = x
+            print()
+            localStorageItems()
+        }
+
+
+        function deleteWhileData() {
+            if (globalArray.length) {
+                globalArray.length = 0
+                print()
+                localStorageItems()
+            }
+        }
+
+        function localStorageItems(){
+            localStorage.setItem('arrayItem',JSON.stringify(globalArray))
+        }
+
+
+
+    </script>
+</body>
+
+</html>
